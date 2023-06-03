@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
@@ -51,6 +52,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/about', [ ProfileController::class, 'about']);
 Route::get('/contact', [ ProfileController::class, 'contacts']);
 Route::post('/email', [ ProfileController::class, 'email']);
+
+
+Route::get('favorite', [FavoritesController::class, "index"])->middleware(("customer"));
+Route::post('favorite', [FavoritesController::class, "store"])->middleware(("customer"));
+Route::delete('favorite/{slot}', [FavoritesController::class, "destroy"])->middleware(("customer"));
 
 
 

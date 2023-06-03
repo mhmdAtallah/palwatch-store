@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -12,7 +12,7 @@
     @case('/')
     <title>Pal Watch Store | Home</title>
         @break
- 
+
         @case('products')
         <title>Pal Watch Store | Products</title>
         @break
@@ -24,7 +24,7 @@
         @case('contact')
         <title>Pal Watch Store | Contacts</title>
         @break
- 
+
     @default
     <title>Pal Watch Store </title>
 @endswitch
@@ -46,7 +46,7 @@
 
 <body>
     <div id="app">
-   
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container fw-bold fs-5">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -76,6 +76,13 @@
                         <li class="nav-item {{ request()->path() === 'contact' ? 'active' : '' }}"><a href="/contact"
                                 class="nav-link">
                                 Contacts</a></li>
+
+
+                      @can('customer')
+                      <li class="nav-item {{ request()->path() === 'favorite' ? 'active' : '' }}"><a href="/favorite"
+                        class="nav-link  ">
+                         <i class="bi bi-heart-fill fs-3"></i></a></li>
+                      @endcan
 
 
                     </ul>

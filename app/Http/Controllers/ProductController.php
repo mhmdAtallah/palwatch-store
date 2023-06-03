@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorites;
 use App\Models\Images;
 use App\Models\Product;
 use Gate;
@@ -82,7 +83,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('product.show', ['product' => Product::where('id', $product->id)->first()], );
+        $isFav =  Favorites::where('product_id' , $product->id)->first();
+        return view('product.show', ['product' => Product::where('id', $product->id)->first() , "isFav"=>$isFav]);
     }
 
     /**

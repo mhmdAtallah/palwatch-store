@@ -68,7 +68,25 @@
                          <button class="btn btn-dark" type="submit" @disabled($product->quantity <= 0)>add to cart </button>
                      </div>
 
+
+
                  </form>
+                 <div class="d-flex align-items-center justify-content-start mt-4">
+                    @if ($isFav)
+                  <form action="/favorite/{{ $isFav->id }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button class="btn btn-warning text-white " type="submit" >Remove from Favorite  <i class="bi bi-heart-half"></i> </button>
+                  </form>
+
+                    @else
+                    <form action="/favorite" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}" >
+                        <button class="btn btn-info text-white " type="submit" >add to Favorite  <i class="bi bi-heart"></i> </button>
+                      </form>
+                    @endif
+                </div>
                  @if (!$product->quantity)
                      <h3 style="text-decoration: line-through">SOLD OUT</h3>
                  @endif
@@ -126,7 +144,7 @@
          function editCount(value) {
              value = parseInt(count.value) + value
              count.value = value;
-            total.textContent = value * {{$product->price}} 
+            total.textContent = value * {{$product->price}}
          }
 
      </script>
