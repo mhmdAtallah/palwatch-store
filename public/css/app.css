@@ -1,0 +1,32 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+
+}
+
+:root {
+  --first: #DCD7C9;
+  --second: #A27B5C;
+  --third: #3F4E4F;
+  --fourth: #2C3639;
+}
+
+body {
+  width: 100%;
+  background-color: whitesmoke;
+  color: var(--fourth);
+  overflow-x: hidden;
+}
+
+.navbar {
+ background-color: var(--first);
+
+ box-shadow: 0px 8px 10px 1px  var(--fourth);
+-webkit-box-shadow: 0px 8px 10px 1px  var(--fourth);
+-moz-box-shadow: 0px 8px 10px 1px  var(--fourth);
+margin-bottom: 1rem;
+
+}
+
+
