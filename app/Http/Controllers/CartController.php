@@ -76,6 +76,7 @@ class CartController extends Controller
         }
 
         $product->update(["quantity" => $product->quantity - $req->count]);
+        session()->flash("success" , "Product added to cart");
 
         return redirect()->back();
 
@@ -111,6 +112,7 @@ class CartController extends Controller
     {
         $product = Product::all()->where('id', $cart->product_id)->first();
         $product->update(["quantity" => $product->quantity + $cart->quantity]);
+        session()->flash("success" , "Product removed from cart");
 
         $cart->delete();
         return redirect()->back();

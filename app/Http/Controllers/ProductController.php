@@ -72,8 +72,7 @@ class ProductController extends Controller
             ]);
 
         }
-
-
+        session()->flash("success" , "product Added successfully");
         return redirect('/products')->with('success', "product added successfully");
 
     }
@@ -84,6 +83,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $isFav =  Favorites::where('product_id' , $product->id)->first();
+
         return view('product.show', ['product' => Product::where('id', $product->id)->first() , "isFav"=>$isFav]);
     }
 
@@ -111,6 +111,7 @@ class ProductController extends Controller
         ]);
 
         $product->update($credentials);
+        session()->flash("success" , "product updated successfully");
         return redirect("/product/" . $product->id)->with('success', "product updated successfully");
 
     }
@@ -121,6 +122,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        session()->flash("success" , "product deleted successfully");
+
         return redirect('/products');
     }
 }

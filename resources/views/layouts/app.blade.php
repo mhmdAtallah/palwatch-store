@@ -9,25 +9,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @switch(request()->path())
-    @case('/')
-    <title>Pal Watch Store | Home</title>
+        @case('/')
+            <title>Pal Watch Store | Home</title>
         @break
 
         @case('products')
-        <title>Pal Watch Store | Products</title>
+            <title>Pal Watch Store | Products</title>
         @break
 
         @case('about')
-        <title>Pal Watch Store | About</title>
+            <title>Pal Watch Store | About</title>
         @break
 
         @case('contact')
-        <title>Pal Watch Store | Contacts</title>
+            <title>Pal Watch Store | Contacts</title>
         @break
 
-    @default
-    <title>Pal Watch Store </title>
-@endswitch
+        @default
+            <title>Pal Watch Store </title>
+    @endswitch
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -78,11 +78,11 @@
                                 Contacts</a></li>
 
 
-                      @can('customer')
-                      <li class="nav-item {{ request()->path() === 'favorite' ? 'active' : '' }}"><a href="/favorite"
-                        class="nav-link  ">
-                         <i class="bi bi-heart-fill fs-3"></i></a></li>
-                      @endcan
+                        @can('customer')
+                            <li class="nav-item {{ request()->path() === 'favorite' ? 'active' : '' }}"><a href="/favorite"
+                                    class="nav-link  ">
+                                    <i class="bi bi-heart-fill fs-3"></i></a></li>
+                        @endcan
 
 
                     </ul>
@@ -153,8 +153,45 @@
 
         <main class="">
             @yield('content')
+
+            @if ( session('success'))
+
+                    <div class="toast text-dark  bg-light">
+                        <div class="toast-header text-dark fs-6 bg-secondary ">
+                            <strong class="me-auto">Success <i class="bi bi-check-all fs-4" ></i> </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body fs-5">
+                            <p> {{ session('success')}}</p>
+                        </div>
+                    </div>
+
+
+
+
+            @endif
         </main>
     </div>
+
+    <style>
+        .toast{
+            position: fixed;
+            top: 6rem ;
+            right: 1rem;
+        }
+    </style>
+
+
+
+    <script>
+        window.addEventListener("load", function() {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function(toastEl) {
+                return new bootstrap.Toast(toastEl)
+            })
+            toastList.forEach(toast => toast.show())
+        });
+    </script>
 
 
 </body>

@@ -46,6 +46,8 @@ class PaymentController extends Controller
             "location"=>$request->location ,
             "phone"=>$request->phone ,
         ]);
+        session()->flash("success" , "Payment added successfully");
+
 
         return redirect("/");
     }

@@ -21,10 +21,12 @@ class ProfileController extends Controller
         try {
             $user->update(['username' => $req->username, "name" => $req->name, "email" => $req->email, "phone" => $req->phone, 'location' => $req->location]);
         } catch (\Throwable $th) {
-
-            return redirect("/profile")->with('Profile updated successfully');
+            session()->flash("error" , "some thing went wrong");
+            return redirect("/profile") ;
         }
-        return redirect("/profile")->with('Profile updated successfully');
+        session()->flash("success" , "Profile updated successfully");
+
+        return redirect("/profile") ;
 
     }
 
@@ -40,7 +42,7 @@ class ProfileController extends Controller
     }
 
     public function email() {
-        
+
         return view('home');
     }
 }
