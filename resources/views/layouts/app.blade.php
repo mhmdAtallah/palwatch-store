@@ -156,8 +156,8 @@
 
             @if ( session('success'))
 
-                    <div class="toast text-dark  bg-light">
-                        <div class="toast-header text-dark fs-6 bg-secondary ">
+                    <div class="toast text-dark  bg-light" style=" border-color:rgba(123, 218, 123, 0.719);">
+                        <div class="toast-header text-dark fs-6  " style="background-color: rgba(123, 218, 123, 0.719);">
                             <strong class="me-auto">Success <i class="bi bi-check-all fs-4" ></i> </strong>
                             <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
                         </div>
@@ -174,7 +174,7 @@
 
             @if ( session('error'))
 
-            <div class="toast text-dark  bg-light">
+            <div class="toast text-dark  bg-light" style="border-color:rgba(255, 0, 0, 0.719);">
                 <div class="toast-header text-danger fs-6 bg-secondary ">
                     <strong class="me-auto">Error <i class="bi bi-exclamation-circle"></i> </strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
