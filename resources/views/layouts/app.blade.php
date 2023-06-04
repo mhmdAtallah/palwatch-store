@@ -169,7 +169,26 @@
 
 
 
+
             @endif
+
+            @if ( session('error'))
+
+            <div class="toast text-dark  bg-light">
+                <div class="toast-header text-danger fs-6 bg-secondary ">
+                    <strong class="me-auto">Error <i class="bi bi-exclamation-circle"></i> </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body fs-5">
+                    <p> {{ session('error')}}</p>
+                </div>
+            </div>
+
+
+
+
+
+    @endif
         </main>
     </div>
 

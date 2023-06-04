@@ -20,7 +20,8 @@ class CartController extends Controller
             return $p->image;
         });
         if (!$carts->count()) {
-            return redirect('/products')->with('auth', 'there is no product in the carts ');
+            session()->flash('error',   'there is no product in the carts ');
+            return redirect('/products');
         }
 
         return view('cart.show', ["carts" => $carts, "imgs" => $imgs]);
