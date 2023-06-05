@@ -93,7 +93,6 @@
              @endcan
 
 
-
          </div>
          <div class="col-12 col-md-5 img  d-flex  justify-content-center  ">
              <div class=" mb-5  h-50 img w-sm-100 w-md-75">
@@ -101,12 +100,19 @@
                      <div class="ombre-interne">
                          <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
                              <div class="carousel-inner ">
-                                 @foreach ($product->images as $image)
-                                     <div class="carousel-item active">
-                                         <img src="{{ asset('storage/' . $image->path) }}"
-                                             class="d-block w-100 peinture-ombre-interne-fine" alt="...">
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('storage/' . $product->images[0]->path) }}"
+                                        class="d-block w-100 peinture-ombre-interne-fine" alt="...">
 
-                                     </div>
+                                </div>
+                                 @foreach ($product->images as $image)
+                                    @if(!$loop->first)
+                                    <div class="carousel-item ">
+                                        <img src="{{ asset('storage/' . $image->path) }}"
+                                            class="d-block w-100 peinture-ombre-interne-fine" alt="...">
+
+                                    </div>
+                                    @endif
                                  @endforeach
                              </div>
                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"

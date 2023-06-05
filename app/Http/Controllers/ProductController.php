@@ -51,11 +51,6 @@ class ProductController extends Controller
                 'required',
             ]
         ]);
-
-
-
-
-
         $product = Product::create([
             "title" => $req->title,
             "price" => $req->price,
@@ -63,9 +58,10 @@ class ProductController extends Controller
             "description" => $req->description,
 
         ]);
-        foreach ($req->file("images") as $image) {
-            $path =strtotime(now()). '.' .$image->getClientOriginalExtension();
-            $image->storeAs('public', $path,);
+
+        foreach ($req->file("images") as $index=>$image) {
+            $path =strtotime(now()). "$index." .$image->getClientOriginalExtension();
+            $image->storeAs('public', $path);
             Images::create([
                 "path" => $path,
                 "product_id" => $product->id
