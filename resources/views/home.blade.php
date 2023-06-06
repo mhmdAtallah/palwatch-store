@@ -135,6 +135,8 @@ footer
     font-weight: bold;
     width: 70%;
 }
+
+
 .footer-para:hover
 {
     color: var(--light-gray-color);

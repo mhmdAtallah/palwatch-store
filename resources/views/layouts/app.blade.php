@@ -79,9 +79,9 @@
 
 
                         @can('customer')
-                            <li class="nav-item {{ request()->path() === 'favorite' ? 'active' : '' }}"><a href="/favorite"
+                            <li class="  nav-item {{ request()->path() === 'favorite' ? 'active' : '' }}"><a href="/favorite" style="position: absolute; font-size: 10px; bottom: 27px; right: 320px;"
                                     class="nav-link  ">
-                                    <i class="bi bi-heart-fill fs-3"></i></a></li>
+                                    <i class="bi bi-heart-fill fs-4 "></i></a></li>
                         @endcan
 
 

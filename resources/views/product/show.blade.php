@@ -11,18 +11,26 @@
 
      <div contai class="row mx-auto" style="position: relative; width: 90%  ;   ">
 
-         <div class="col-12  col-md-6 info    ">
+         <div class="col-12  col-md-6 info    " >
 
-             <h1 class="fw-bold fs-1  py-4">{{ $product->title }}</h1>
-             <h2 class=" m-0  ">{{ $product->price }}$</h2>
+             <h1 class="fw-bold fs-1  py-4 ms-3 m-0">{{ $product->title }}</h1>
+             <h2 class=" ms-3 m-0 "><span class="fw-bold">Price : </span>{{ $product->price }}$</h2>
 
 
              @can('admin')
-                 <h3>Quantity : {{ $product->quantity }}</h3>
+                 <h3  class="ms-3 m-0">Quantity : {{ $product->quantity }}</h3>
              @endcan
 
 
-             <p class="p-3 fs-5 "> {{ $product->description }}
+             <p class="p-3 fs-5">
+                <?php 
+                    $des = explode(',', $product->description);
+                    foreach ($des as $value) {
+                        echo $value . "<br>";
+                    }
+                ?>
+            </p>
+            
                  <hr>
 
 
