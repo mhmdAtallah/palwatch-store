@@ -47,7 +47,7 @@ class PaymentController extends Controller
             "phone"=>$request->phone ,
         ]);
 
-
+        session()->push('total',$total);
         return redirect("/stripe");
     }
 

@@ -28,10 +28,8 @@ class StripePaymentController extends Controller
      */
     public function stripePost(Request $request): RedirectResponse
     {
-
-
+        session()->pull('total');
         session()->flash("success" , "Payment added successfully");
-
         return redirect('/')->with('success', 'Payment successful!');
     }
 }

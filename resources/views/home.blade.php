@@ -98,6 +98,9 @@
 
                 </div>
 
+                <h1 class="text-center" > <a href="whatsapp://send?phone=+972595084839" style="color:green"><i class="bi bi-whatsapp"></i></a></h1>
+               
+
             </div>
         </div>
             <hr class="footer-item footer-line">

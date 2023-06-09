@@ -26,9 +26,9 @@
                     <form id="checkout-form" method="post" action="{{ route('stripe.post') }}">
                         @csrf
                         <input type="hidden" name="stripeToken" id="stripe-token-id">
-                        <br>
+                        <br> 
                         <div id="card-element" class="form-group"></div>
-                        <button id="pay-btn" class="btn btn-success mt-3" type="button" style="margin-top: 20px; width: 100%; padding: 7px;" onclick="createToken()">PAY $10</button>
+                        <button id="pay-btn" class="btn btn-success mt-3" type="button" style="margin-top: 20px; width: 100%; padding: 7px;" onclick="createToken()">PAY ${{Session('total')[0]}}</button>
                     </form>
                 </div>
             </div>

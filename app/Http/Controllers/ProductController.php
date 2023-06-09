@@ -27,7 +27,6 @@ class ProductController extends Controller
         $rolex = request('ROLEX');
         $unisex = request('UNISEX');
 
-
         $products = Product::orderBy('created_at', 'DESC');
         $search = request('search');
         $price = request('price')?? 100000;
