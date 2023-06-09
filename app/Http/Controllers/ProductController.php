@@ -15,15 +15,65 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+        $emporio = request('EMPORIO');
+        $burberry = request('BURBERRY');
+        $boss = request('BOSS');
+        $jacobs = request('JACOBS');
+        $versace = request('VERSACE');
+        $diesel = request('DIESEL');
+        $tissot = request('TISSOT');
+        $fossil = request('FOSSIL');
+        $rolex = request('ROLEX');
+        $unisex = request('UNISEX');
+
+
         $products = Product::orderBy('created_at', 'DESC');
         $search = request('search');
+        $price = request('price')?? 100000;
+
+
         if ($search) {
             $products = $products->where('title', 'like', "%{$search}%")->orWhere('description', 'like', "%{$search}%");
         }
 
+        if($emporio) {
+            $products = $products->where('title', 'like', "%{$emporio}%");
+        }
+        if($burberry) {
+            $products = $products->orWhere('title', 'like', "%{$burberry}%");
+        }
+        if($boss) {
+            $products = $products->orWhere('title', 'like', "%{$boss}%");
+        }
+        if($jacobs) {
+            $products = $products->orWhere('title', 'like', "%{$jacobs}%");
+        }
+        if($versace) {
+            $products = $products->orWhere('title', 'like', "%{$versace}%");
+        }
+        if($diesel) {
+            $products = $products->orWhere('title', 'like', "%{$diesel}%");
+        }
+        if($tissot) {
+            $products = $products->orWhere('title', 'like', "%{$tissot}%");
+        }
+        if($fossil) {
+            $products = $products->orWhere('title', 'like', "%{$fossil}%");
+        }
+        if($rolex) {
+            $products = $products->orWhere('title', 'like', "%{$rolex}%");
+        }
+        if($unisex) {
+            $products = $products->orWhere('title', 'like', "%{$unisex}%");
+        }
 
 
-        return view('products', ['products' => $products->paginate(8)]);
+        if ($price) {
+            $products = $products->Where('price' , '<=' , $price);
+        }
+
+        return view('products', ['products' => $products->paginate(9)]);
     }
 
     /**

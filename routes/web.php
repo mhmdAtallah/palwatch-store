@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',  [HomeController::class , 'index']); //here
+Route::get('/',  [HomeController::class , 'index']);
 
 Route::get('/products', [ProductController::class, "index"]);
 Route::get('/product/{product}', [ProductController::class, "show"]);
@@ -58,6 +59,8 @@ Route::get('favorite', [FavoritesController::class, "index"])->middleware(("cust
 Route::post('favorite', [FavoritesController::class, "store"])->middleware(("customer"));
 Route::delete('favorite/{slot}', [FavoritesController::class, "destroy"])->middleware(("customer"));
 
+Route::get('stripe',  [StripePaymentController::class , 'stripe'])->middleware(("customer"));
+Route::post('stripe',  [StripePaymentController::class , 'stripePost'])->name('stripe.post')->middleware(("customer"));
 
 
 
